@@ -4,7 +4,10 @@
 - [ ] **에이전트 역할 정의**: 검색 전문가, 품질 검수 전문가, 상담 전문가 등 필요한 에이전트의 페르소나를 정의합니다.
 - [ ] **그래프 설계**: LangGraph로 구현할 상태(State)와 노드(Node) 간의 흐름도를 미리 스케치합니다.
 
-## 2. 단계별 행동 요령 (Step-by-Step Action)
+## 2. 단계별 행동 요령### [Step-by-Step Actions]
+1.  **Backend Execution**: Run `py backend_api.py`. (Port: 8004)
+2.  **Frontend Execution**: Run `streamlit run frontend_ui.py`.
+3.  **Interaction**: Ask for personal recommendations (e.g., "Recommend a restaurant based on my taste").
 
 ### Phase 1: LangGraph 기초 구현
 - 상태 변수(State)를 정의하고 가장 단순한 환류 루프(Feedback Loop)를 먼저 테스트합니다.

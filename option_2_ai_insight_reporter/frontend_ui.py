@@ -58,15 +58,19 @@ if menu == "뉴스 수집 및 분석":
 
         with st.spinner("최신 뉴스를 분석하고 보고서를 작성 중입니다..."):
             try:
-                res = requests.post(f"http://127.0.0.1:8001/ask?query={prompt}")
+                res = requests.post("http://127.0.0.1:8001/ask", params={"query": prompt})
                 if res.status_code == 200:
                     data = res.json()
                     st.session_state.last_ans = data["answer"]
                     st.session_state.chat_history.append(("assistant", data["answer"]))
                     st.session_state.stats_log.append(data["stats"])
                     st.rerun()
-            except:
-                st.error("백엔드 서버 미작동 (py backend_api.py)")
+                else:
+                    st.error(f"백엔드 오류 (Status: {res.status_code})")
+            except requests.exceptions.RequestException as e:
+                st.error(f"백엔드 연결 실패: {e}")
+            except Exception as e:
+                st.error(f"알 수 없는 오류 발생: {e}")
 
     if st.session_state.last_ans:
         st.divider()

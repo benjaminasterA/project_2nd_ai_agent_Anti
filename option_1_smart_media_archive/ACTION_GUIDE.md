@@ -6,11 +6,10 @@
 - [ ] **환경 설정**: `.env` 파일을 생성하여 API Key (OpenAI, Qdrant 등)를 안전하게 관리합니다.
 - [ ] **가상 환경**: `python -m venv venv`를 통해 독립적인 백엔드 환경을 구축합니다.
 
-## 2. 단계별 행동 요령 (Step-by-Step Action)
-
-### Phase 1: 아키텍처 구축
-- 백엔드(FastAPI)와 프론트엔드(React) 폴더를 분리하고 기본 통신 구조를 만듭니다.
-- **주의**: CORS 설정을 미리 완료하여 인터페이스 간 통신 오류를 방지합니다.
+## 2. 단계별 행동 요령### [Step-by-Step Actions]
+1.  **Backend Execution**: Run `py backend_api.py`. (Port: 8003)
+2.  **Frontend Execution**: Run `streamlit run frontend_ui.py`.
+3.  **Interaction**: Ask questions about media (e.g., "Find blue sky photos").
 
 ### Phase 2: 데이터 처리 엔진 개발
 - 이미지 업로드 API를 구현합니다.

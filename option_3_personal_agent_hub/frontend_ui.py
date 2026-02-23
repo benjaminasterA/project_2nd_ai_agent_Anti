@@ -29,14 +29,18 @@ if prompt := st.chat_input("에이전트에게 무엇이든 물어보세요...")
 
     with st.spinner("에이전트가 생각 중입니다..."):
         try:
-            res = requests.post(f"http://127.0.0.1:8002/ask?query={prompt}")
+            res = requests.post("http://127.0.0.1:8004/ask", params={"query": prompt})
             if res.status_code == 200:
                 data = res.json()
                 st.session_state.chat_history.append(("assistant", data["answer"]))
                 st.session_state.stats_log.append(data["stats"])
                 st.rerun()
-        except:
-            st.error("백엔드가 응답하지 않습니다.")
+            else:
+                st.error(f"백엔드 오류 (Status: {res.status_code})")
+        except requests.exceptions.RequestException as e:
+            st.error(f"백엔드 연결 실패: {e}")
+        except Exception as e:
+            st.error(f"알 수 없는 오류 발생: {e}")
 
 # 사이드바: 에이전트 상태 및 음성 안내
 st.sidebar.title("Agent Status")

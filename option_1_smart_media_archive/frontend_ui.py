@@ -56,15 +56,19 @@ if menu == "미디어 분석 및 검색":
 
         with st.spinner("AI가 미디어를 분석 중입니다..."):
             try:
-                res = requests.post(f"http://127.0.0.1:8003/ask?query={prompt}")
+                res = requests.post("http://127.0.0.1:8003/ask", params={"query": prompt})
                 if res.status_code == 200:
                     data = res.json()
                     st.session_state.last_ans = data["answer"]
                     st.session_state.chat_history.append(("assistant", data["answer"]))
                     st.session_state.stats_log.append(data["stats"])
                     st.rerun()
-            except:
-                st.error("백엔드 서버가 실행 중인지 확인해 주세요. (py backend_api.py)")
+                else:
+                    st.error(f"백엔드 오류 (Status: {res.status_code})")
+            except requests.exceptions.RequestException as e:
+                st.error(f"백엔드 연결 실패: {e}")
+            except Exception as e:
+                st.error(f"알 수 없는 오류 발생: {e}")
 
     if st.session_state.last_ans:
         st.divider()

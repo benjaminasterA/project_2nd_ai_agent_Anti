@@ -1,2 +1,0 @@
-# project_2nd_ai_agent_Anti
-project_2nd_ai_agent Anti
