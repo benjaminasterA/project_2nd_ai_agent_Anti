@@ -1,0 +1,653 @@
+/**
+ * [vedioAI] Version: v1.2.1 | Snapshot: SNAPSHOTS.md#v121
+ * Description: High-Fidelity UI Reconstruction (Exact Reference Mapping)
+ * 1번 화면의 미비점을 2번 이미지와 대조하여 완벽하게 리팩토링한 디자인 시스템입니다.
+ */
+
+:root {
+    /* --- 🎨 Primary Brand Colors (From Reference Image 2) --- */
+    --color-main-blue: #0f172a;
+    /* 상단 헤더의 짙은 네이비 */
+    --color-sidebar-bg: #f8fafc;
+    /* 사이드바 연한 배경 */
+    --color-sidebar-active: #eff6ff;
+    /* 사이드바 활성 아이템 */
+    --color-accent-blue: #3b82f6;
+    /* 브랜드 포인트 블루 */
+    --color-accent-cyan: #4de0ff;
+    /* 영상 내 로고 및 포인트 */
+    --color-bg-page: #f1f5f9;
+    /* 전체 배경색 */
+
+    /* UI Text & Borders */
+    --color-text-title: #1e293b;
+    --color-text-muted: #64748b;
+    --color-border: #e2e8f0;
+
+    /* Layout Tokens */
+    --radius-box: 16px;
+    --shadow-soft: 0 4px 12px rgba(0, 0, 0, 0.03), 0 1px 2px rgba(0, 0, 0, 0.06);
+    --font-main: 'Inter', sans-serif;
+    --font-head: 'Outfit', sans-serif;
+}
+
+/* --- 🧊 Base Reset & Core Layout --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--color-bg-page);
+    color: var(--color-text-title);
+    font-family: var(--font-main);
+    overflow: hidden;
+    height: 100vh;
+}
+
+.app-shell {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    height: 100vh;
+    background: #fff;
+}
+
+/* --- 📦 Sidebar (Exact Image 2 Match) --- */
+.sidebar {
+    background: var(--color-sidebar-bg);
+    border-right: 1px solid var(--color-border);
+    display: flex;
+    flex-direction: column;
+    padding: 24px 0;
+}
+
+.logo {
+    padding: 0 24px;
+    margin-bottom: 32px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo i {
+    font-size: 28px;
+    color: var(--color-accent-blue);
+}
+
+.logo-text {
+    font-size: 18px;
+    font-weight: 700;
+    font-family: var(--font-head);
+}
+
+.logo-text span {
+    color: var(--color-accent-blue);
+    display: block;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.nav-menu {
+    flex: 1;
+    padding: 0 12px;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    text-decoration: none;
+    color: var(--color-text-muted);
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 500;
+    transition: 0.2s;
+    margin-bottom: 4px;
+}
+
+.nav-item:hover,
+.nav-item.active {
+    background: var(--color-sidebar-active);
+    color: var(--color-accent-blue);
+}
+
+.nav-item.active {
+    font-weight: 700;
+}
+
+.sidebar-footer {
+    padding: 24px;
+    border-top: 1px solid var(--color-border);
+}
+
+.user-profile {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border-radius: 12px;
+    padding: 8px;
+    cursor: pointer;
+}
+
+.avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 24px solid #fff;
+}
+
+/* Dicebear fix */
+.user-name {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+/* --- 🏛️ Header & Top Nav (Dark Blue Background) --- */
+.main-content {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.top-nav {
+    background: var(--color-main-blue);
+    color: #fff;
+    padding: 12px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.header-left .global-target-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.dropdown-toggle {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 6px 12px;
+    border-radius: 8px;
+    color: #fff;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.country-pills {
+    display: flex;
+    gap: 6px;
+}
+
+.pill {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid transparent;
+    padding: 4px 10px;
+    border-radius: 100px;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: rgba(255, 255, 255, 0.8);
+    cursor: pointer;
+}
+
+.pill.active {
+    background: #fff;
+    color: var(--color-main-blue);
+    font-weight: 700;
+}
+
+.pill img {
+    width: 14px;
+    border-radius: 1px;
+}
+
+.user-pill {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.mini-avatar {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: #fff;
+}
+
+/* --- 🖼️ Workspace Grid --- */
+.workspace-container {
+    padding: 24px;
+    display: grid;
+    grid-template-columns: 1fr 340px;
+    gap: 24px;
+    flex: 1;
+    overflow-y: auto;
+}
+
+/* 📦 Box Unit Card (Premium Light Style) */
+.box-unit {
+    background: #fff;
+    border-radius: var(--radius-box);
+    box-shadow: var(--shadow-soft);
+    border: 1px solid var(--color-border);
+    padding: 20px;
+}
+
+.box-unit.pulse {
+    animation: pulse-bg 1s ease;
+}
+
+/* Custom Keyword Input */
+.kw-input-row {
+    display: flex;
+    gap: 8px;
+    margin-top: 8px;
+    margin-bottom: 12px;
+}
+
+.kw-input-row input {
+    flex: 1;
+    padding: 8px 12px;
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    font-size: 0.85rem;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.kw-input-row input:focus {
+    border-color: var(--color-accent-blue);
+}
+
+.kw-input-row button {
+    padding: 8px;
+    background: var(--color-accent-blue);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.kw-input-row button:hover {
+    background: #2563eb;
+}
+
+.box-title {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.blue-dot::before {
+    content: '';
+    width: 6px;
+    height: 18px;
+    background: var(--color-accent-blue);
+    border-radius: 100px;
+}
+
+/* 🎥 Video Player Box */
+.player-box .video-container {
+    border-radius: 12px;
+    overflow: hidden;
+    background: #000;
+    position: relative;
+}
+
+.player-box .video-screen {
+    aspect-ratio: 16 / 9;
+    width: 100%;
+    position: relative;
+}
+
+.video-screen img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.vid-tag {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    background: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-weight: 700;
+}
+
+.video-controls {
+    background: #fff;
+    padding: 12px 20px;
+    border-top: 1px solid var(--color-border);
+}
+
+.bar-bg {
+    height: 4px;
+    background: #f1f5f9;
+    border-radius: 100px;
+    position: relative;
+    cursor: pointer;
+}
+
+.bar-fill {
+    position: absolute;
+    left: 0;
+    background: var(--color-accent-blue);
+    height: 100%;
+    border-radius: 100px;
+    box-shadow: 0 0 8px rgba(59, 130, 246, 0.3);
+}
+
+/* ⏱️ Timeline Box (High-Fidelity) */
+.timeline-box {
+    margin-top: 24px;
+}
+
+.timeline-visual {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 16px;
+    position: relative;
+}
+
+.track-headers {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 200px;
+    font-size: 13px;
+    font-weight: 700;
+    color: #64748b;
+}
+
+.track-canvas {
+    background: #f8fafc;
+    border: 1px solid #f1f5f9;
+    border-radius: 10px;
+    height: 200px;
+    position: relative;
+    overflow: hidden;
+}
+
+.track {
+    height: 50px;
+    border-bottom: 1px solid #f1f5f9;
+    position: relative;
+}
+
+.clip {
+    position: absolute;
+    top: 10px;
+    height: 30px;
+    background: #fff;
+    border: 1px solid var(--color-accent-blue);
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--color-accent-blue);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.tmb {
+    position: absolute;
+    top: 5px;
+    width: 60px;
+    height: 40px;
+    background: #ddd;
+    border-radius: 4px;
+    border: 1px solid #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.tmb.active {
+    border-color: var(--color-accent-blue);
+    transform: scale(1.05);
+    z-index: 2;
+}
+
+/* 📈 Emotion Arc & Playhead */
+.emotion-track {
+    background: url('data:image/svg+xml;utf8,<svg ... />');
+}
+
+/* Simulating wave */
+.playhead-line {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: #ef4444;
+    z-index: 10;
+    border-radius: 100px;
+}
+
+.current-time-tag {
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #ef4444;
+    color: #fff;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 10px;
+    font-weight: 800;
+}
+
+/* 🔍 SEO Optimization Sidebar */
+.seo-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.seo-field label {
+    font-size: 13px;
+    font-weight: 700;
+    color: #64748b;
+    margin-bottom: 8px;
+    display: block;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--color-border);
+    border-radius: 10px;
+    font-family: inherit;
+    font-size: 14px;
+    background: #f8fafc;
+    transition: 0.2s;
+}
+
+input[type="text"]:focus {
+    border-color: var(--color-accent-blue);
+    outline: none;
+    background: #fff;
+}
+
+.youtube-icon {
+    color: #ff0000;
+    font-size: 20px;
+}
+
+.progress-mini {
+    flex: 1;
+    height: 6px;
+    background: #f1f5f9;
+    border-radius: 100px;
+    overflow: hidden;
+}
+
+.progress-mini .fill {
+    height: 100%;
+    background: #ef4444;
+    border-radius: 100px;
+}
+
+.tone-picker {
+    display: flex;
+    background: #f1f5f9;
+    padding: 4px;
+    border-radius: 10px;
+    gap: 4px;
+}
+
+.tone-picker button {
+    flex: 1;
+    border: none;
+    background: transparent;
+    padding: 10px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: 8px;
+    color: #64748b;
+}
+
+.tone-picker button.active {
+    background: #fff;
+    color: var(--color-accent-blue);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+/* 📊 Bottom Analytics */
+.bottom-stats {
+    padding: 0 24px 24px 24px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+}
+
+.stat-card {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 16px;
+}
+
+.card-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+}
+
+.card-icon.blue {
+    background: #eff6ff;
+    color: #3b82f6;
+}
+
+.card-icon.green {
+    background: #f0fdf4;
+    color: #22c55e;
+}
+
+.card-icon.teal {
+    background: #f0fdfa;
+    color: #14b8a6;
+}
+
+.card-icon.red {
+    background: #fef2f2;
+    color: #ef4444;
+}
+
+.card-body label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: 700;
+    color: #94a3b8;
+}
+
+.value {
+    font-size: 22px;
+    font-weight: 700;
+    font-family: var(--font-head);
+}
+
+/* Circular Ring Stat */
+.ring {
+    --p: 0;
+    --s: 40px;
+    width: var(--s);
+    height: var(--s);
+    border-radius: 50%;
+    background: conic-gradient(var(--color-accent-blue) calc(var(--p) * 1%), #f1f5f9 0);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.ring::after {
+    content: '';
+    position: absolute;
+    width: 32px;
+    height: 32px;
+    background: #fff;
+    border-radius: 50%;
+}
+
+.ring>span {
+    position: relative;
+    z-index: 2;
+}
+
+/* ⚡ Primary Button */
+.primary-btn {
+    background: var(--color-accent-blue);
+    color: #fff;
+    border: none;
+    padding: 16px;
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 15px;
+    font-family: var(--font-head);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: 0.2s;
+}
+
+.primary-btn:hover {
+    background: #2563eb;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
+}

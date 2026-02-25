@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="ko">
+<!-- [vedioAI] Version: v1.2.1 | Snapshot: SNAPSHOTS.md#v121 -->
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Video SEO Agent | Premium Dashboard</title>
+    <link rel="stylesheet" href="frontend_vedioAI.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;700&display=swap"
+        rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+</head>
+
+<body>
+    <div class="app-shell">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar box-unit">
+            <div class="logo">
+                <i class="ph-fill ph-rocket-launch"></i>
+                <div class="logo-text">AI Video <span>SEO Agent</span></div>
+            </div>
+            <nav class="nav-menu">
+                <a href="#" class="nav-item active"><i class="ph ph-squares-four"></i> Dashboard</a>
+                <a href="#" class="nav-item" id="navVideoUpload"><i class="ph ph-video-camera"></i> Video Upload</a>
+                <a href="#" class="nav-item"><i class="ph ph-magnifying-glass"></i> SEO Keywords</a>
+                <a href="#" class="nav-item"><i class="ph ph-chart-line"></i> Analytics</a>
+                <a href="#" class="nav-item"><i class="ph ph-clock"></i> Timeline</a>
+                <a href="#" class="nav-item"><i class="ph ph-gear"></i> Settings</a>
+            </nav>
+            <!-- Hidden File Input for Upload -->
+            <input type="file" id="videoFileInput" accept="video/*" style="display: none;">
+            <div class="sidebar-footer">
+                <div class="user-profile">
+                    <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Admin" alt="User" class="avatar">
+                    <div class="user-info">
+                        <span class="user-name">Admin</span>
+                        <i class="ph ph-caret-down"></i>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Workspace -->
+        <main class="main-content">
+            <!-- Top Navigation / Dark Header -->
+            <header class="top-nav">
+                <div class="header-left">
+                    <div class="global-target-wrapper">
+                        <i class="ph ph-globe"></i>
+                        <span class="label">Global Target:</span>
+                        <div class="dropdown-toggle" id="countryToggle">
+                            <img src="https://flagcdn.com/us.svg" width="20" alt="USA">
+                            <span>United States</span>
+                            <i class="ph ph-caret-down"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="header-right">
+                    <div class="country-pills">
+                        <div class="pill active"><img src="https://flagcdn.com/kr.svg"> Korea</div>
+                        <div class="pill"><img src="https://flagcdn.com/jp.svg"> Japan</div>
+                        <div class="pill"><img src="https://flagcdn.com/de.svg"> Germany</div>
+                    </div>
+                    <div class="actions">
+                        <button class="icon-btn notification"><i class="ph ph-bell"></i></button>
+                        <div class="user-pill">
+                            <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Admin" class="mini-avatar">
+                            <span>Admin</span>
+                            <i class="ph ph-caret-down"></i>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <div class="workspace-container">
+                <!-- Center Section: Video & Timeline -->
+                <section class="video-workspace">
+                    <!-- Video Player Box -->
+                    <div class="box-unit player-box">
+                        <div class="box-header">
+                            <h2 class="box-title blue-dot">Video Player</h2>
+                        </div>
+                        <div class="video-container">
+                            <div class="video-screen">
+                                <video id="mainVideo"
+                                    poster="https://images.unsplash.com/photo-1542744094-24638eff58bb?auto=format&fit=crop&q=80&w=1200"
+                                    controls>
+                                    <source src="" type="video/mp4">
+                                    브라우저가 비디오 태그를 지원하지 않습니다.
+                                </video>
+                                <div class="vid-tag">AI Marketing 2026</div>
+                            </div>
+                            <div class="video-controls">
+                                <div class="progress-area">
+                                    <div class="bar-bg">
+                                        <div class="bar-fill" style="width: 45%;"></div>
+                                    </div>
+                                </div>
+                                <div class="controls-row">
+                                    <div class="time-group">
+                                        <span class="time">00:43 / 01:32</span>
+                                    </div>
+                                    <div class="playback-group">
+                                        <i class="ph-fill ph-caret-double-left"></i>
+                                        <i class="ph-fill ph-pause"></i>
+                                        <i class="ph-fill ph-caret-double-right"></i>
+                                    </div>
+                                    <div class="utility-group">
+                                        <i class="ph ph-speaker-high"></i>
+                                        <span class="speed">1.25x</span>
+                                        <i class="ph ph-corners-out"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Multi-Track Timeline Box -->
+                    <div class="box-unit timeline-box">
+                        <div class="box-header">
+                            <h2 class="box-title blue-dot">Multi-Track Timeline</h2>
+                        </div>
+                        <div class="timeline-visual">
+                            <div class="track-headers">
+                                <span>Audio</span>
+                                <span>Text</span>
+                                <span>Scene</span>
+                                <span>Emotion</span>
+                            </div>
+                            <div class="track-canvas">
+                                <div class="track audio-track"></div>
+                                <div class="track text-track">
+                                    <div class="clip c1" style="left: 5%; width: 12%;">Intro</div>
+                                    <div class="clip c2" style="left: 20%; width: 25%;">Product Demo</div>
+                                    <div class="clip c3" style="left: 50%; width: 20%;">Analytics</div>
+                                    <div class="clip c4" style="left: 75%; width: 12%;">CTA</div>
+                                </div>
+                                <div class="track scene-track">
+                                    <div class="tmb" style="left: 5%;"></div>
+                                    <div class="tmb active" style="left: 20%;"></div>
+                                    <div class="tmb" style="left: 35%;"></div>
+                                    <div class="tmb" style="left: 50%;"></div>
+                                    <div class="tmb" style="left: 65%;"></div>
+                                    <div class="tmb" style="left: 80%;"></div>
+                                </div>
+                                <div class="track emotion-track"></div>
+                                <div class="playhead-line" style="left: 43%;">
+                                    <div class="current-time-tag">00:43</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Right Side: SEO Optimization -->
+                <aside class="seo-sidebar box-unit">
+                    <div class="box-header">
+                        <h2 class="box-title">SEO Optimization</h2>
+                        <i class="ph ph-dots-three"></i>
+                    </div>
+
+                    <div class="seo-field">
+                        <label>SEO Title</label>
+                        <input type="text" value="Future of AI Marketing 2026" id="seoTitle">
+                        <div class="platform-meta">
+                            <i class="ph-fill ph-youtube-logo youtube-icon"></i>
+                            <div class="progress-mini">
+                                <div class="fill" style="width: 57%;"></div>
+                            </div>
+                            <span class="count">27 / 100</span>
+                        </div>
+                    </div>
+
+                    <div class="seo-field">
+                        <label>Tone & Manner <span class="tone-val">57/100</span></label>
+                        <div class="tone-picker">
+                            <button>Professional</button>
+                            <button class="active">Viral</button>
+                            <button>Witty</button>
+                        </div>
+                    </div>
+
+                    <div class="keyword-section">
+                        <div class="section-header">
+                            <label>Keyword List</label>
+                            <div class="kw-input-row">
+                                <input type="text" id="manualKeywordInput" placeholder="Add custom keyword...">
+                                <button id="btnAddKeyword"><i class="ph ph-plus"></i></button>
+                            </div>
+                        </div>
+                        <div class="keyword-list" id="keywordListContainer">
+                            <!-- JS Injection -->
+                        </div>
+                    </div>
+
+                    <button class="primary-btn btn-generate">
+                        <i class="ph ph-lightning-fill"></i> Generate SEO
+                    </button>
+                </aside>
+            </div>
+
+            <!-- Bottom Stats -->
+            <footer class="bottom-stats">
+                <div class="stat-card box-unit">
+                    <div class="card-icon blue"><i class="ph ph-users"></i></div>
+                    <div class="card-body">
+                        <label>Views</label>
+                        <div class="val-group">
+                            <span class="value" id="statViews">125,840</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="stat-card box-unit">
+                    <div class="card-icon green"><i class="ph ph-hand-pointing"></i></div>
+                    <div class="card-body">
+                        <label>Engagement</label>
+                        <div class="val-group">
+                            <div class="ring" id="statEngRing" style="--p:89"><span>89%</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="stat-card box-unit">
+                    <div class="card-icon teal"><i class="ph ph-magnifying-glass"></i></div>
+                    <div class="card-body">
+                        <label>SEO Score</label>
+                        <div class="val-group">
+                            <div class="ring" id="statSeoRing" style="--p:92"><span>92</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="stat-card box-unit">
+                    <div class="card-icon red"><i class="ph ph-heartbeat"></i></div>
+                    <div class="card-body">
+                        <label>Emotion Peak</label>
+                        <div class="val-group">
+                            <span class="value" id="statEmotionPeak">00:43</span>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </main>
+    </div>
+    <script src="frontend_vedioAI.js"></script>
+</body>
+
+</html>

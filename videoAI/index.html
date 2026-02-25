@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Video SEO Agent | Global Marketing Dashboard</title>
+    <link rel="stylesheet" href="index.css">
+    <!-- Google Fonts: Inter & Outfit -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Phosphor Icons for a premium look -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+</head>
+<body>
+    <div class="app-shell">
+        <!-- Sidebar Navigation (Z-Pattern Start) -->
+        <aside class="sidebar">
+            <div class="logo">
+                <i class="ph-fill ph-rocket-launch"></i>
+                <span class="logo-text">AI Video <span>SEO Agent</span></span>
+            </div>
+            <nav class="nav-menu">
+                <a href="#" class="nav-item active"><i class="ph ph-squares-four"></i> Dashboard</a>
+                <a href="#" class="nav-item"><i class="ph ph-video-camera"></i> Video Upload</a>
+                <a href="#" class="nav-item"><i class="ph ph-magnifying-glass"></i> SEO Keywords</a>
+                <a href="#" class="nav-item"><i class="ph ph-chart-line"></i> Analytics</a>
+                <a href="#" class="nav-item"><i class="ph ph-clock"></i> Timeline</a>
+                <a href="#" class="nav-item"><i class="ph ph-gear"></i> Settings</a>
+            </nav>
+            <div class="sidebar-footer">
+                <div class="user-profile">
+                    <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Admin" alt="User Profile" class="avatar">
+                    <div class="user-info">
+                        <span class="user-name">Admin</span>
+                        <span class="user-role">Premium Plan</span>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Workspace -->
+        <main class="main-content">
+            <!-- Header with Global Target Toggle -->
+            <header class="top-nav">
+                <div class="global-context">
+                    <span class="label">Global Target:</span>
+                    <div class="country-toggle" id="countryToggle">
+                        <img src="https://flagcdn.com/us.svg" width="20" alt="USA">
+                        <span class="country-name">United States</span>
+                        <i class="ph ph-caret-down"></i>
+                    </div>
+                </div>
+                <div class="quick-actions">
+                    <div class="country-history">
+                        <img src="https://flagcdn.com/kr.svg" title="Korea">
+                        <img src="https://flagcdn.com/jp.svg" title="Japan">
+                        <img src="https://flagcdn.com/de.svg" title="Germany">
+                    </div>
+                    <button class="icon-btn notification"><i class="ph ph-bell"></i><span class="badge"></span></button>
+                </div>
+            </header>
+
+            <div class="workspace-grid">
+                <!-- Center Section: Video & Timeline -->
+                <section class="video-workspace">
+                    <div class="panel video-player-container">
+                        <h2 class="panel-title">Video Player</h2>
+                        <div class="video-canvas">
+                            <div class="video-mock">
+                                <img src="https://images.unsplash.com/photo-1542744094-24638eff58bb?auto=format&fit=crop&q=80&w=1200" alt="Video Preview">
+                                <div class="play-overlay"><i class="ph-fill ph-play"></i></div>
+                                <div class="video-overlay-info">AI Marketing 2026</div>
+                            </div>
+                            <div class="video-controls">
+                                <div class="progress-bar-container">
+                                    <div class="progress-bar">
+                                        <div class="buffered"></div>
+                                        <div class="current-progress" style="width: 45%;"></div>
+                                        <div class="playhead" style="left: 45%;"></div>
+                                    </div>
+                                </div>
+                                <div class="control-row">
+                                    <div class="left-controls">
+                                        <span class="timestamp">00:43 / 01:32</span>
+                                    </div>
+                                    <div class="center-controls">
+                                        <button class="icon-btn"><i class="ph ph-skip-back"></i></button>
+                                        <button class="main-play-btn"><i class="ph-fill ph-play"></i></button>
+                                        <button class="icon-btn"><i class="ph ph-skip-forward"></i></button>
+                                    </div>
+                                    <div class="right-controls">
+                                        <button class="icon-btn"><i class="ph ph-speaker-high"></i></button>
+                                        <span class="speed">1.25x</span>
+                                        <button class="icon-btn"><i class="ph ph-corners-out"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Multi-Track Timeline -->
+                    <div class="panel timeline-container">
+                        <h2 class="panel-title">Multi-Track Timeline</h2>
+                        <div class="timeline-tracks">
+                            <div class="track-labels">
+                                <span>Audio</span>
+                                <span>Text</span>
+                                <span>Scene</span>
+                                <span>Emotion</span>
+                            </div>
+                            <div class="track-canvas">
+                                <div class="time-axis">
+                                    <span>00:00</span><span>00:30</span><span>01:00</span><span>01:30</span>
+                                </div>
+                                <!-- Tracks content will be generated by JS or static for demo -->
+                                <div class="track audio-track">
+                                    <div class="waveform-mock"></div>
+                                </div>
+                                <div class="track text-track">
+                                    <div class="clip text-clip clip-intro" style="left: 5%; width: 15%;">Intro</div>
+                                    <div class="clip text-clip clip-demo" style="left: 25%; width: 30%;">Product Demo</div>
+                                    <div class="clip text-clip clip-analytics" style="left: 60%; width: 20%;">Analytics</div>
+                                    <div class="clip text-clip clip-cta" style="left: 85%; width: 10%;">CTA</div>
+                                </div>
+                                <div class="track scene-track">
+                                    <div class="thumb" style="left: 5%;"><img src="https://picsum.photos/id/1/60/40"></div>
+                                    <div class="thumb" style="left: 25%;"><img src="https://picsum.photos/id/2/60/40"></div>
+                                    <div class="thumb" style="left: 45%;"><img src="https://picsum.photos/id/3/60/40"></div>
+                                    <div class="thumb" style="left: 65%;"><img src="https://picsum.photos/id/4/60/40"></div>
+                                    <div class="thumb" style="left: 85%;"><img src="https://picsum.photos/id/5/60/40"></div>
+                                </div>
+                                <div class="track emotion-track">
+                                    <svg class="emotion-curve" width="100%" height="60" viewBox="0 0 1000 60">
+                                        <path d="M0,50 Q100,20 200,45 T400,10 T600,55 T800,15 T1000,40" fill="none" stroke="url(#emotionGradient)" stroke-width="3" />
+                                        <defs>
+                                            <linearGradient id="emotionGradient" x1="0" y1="0" x2="1" y2="0">
+                                                <stop offset="0%" stop-color="#ff4d4d" />
+                                                <stop offset="45%" stop-color="#4de0ff" />
+                                                <stop offset="100%" stop-color="#4dff88" />
+                                            </linearGradient>
+                                        </defs>
+                                    </svg>
+                                </div>
+                                <div class="timeline-playhead-line" style="left: 45%;">
+                                    <div class="playhead-time">00:43</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Right Side: SEO Optimization -->
+                <aside class="seo-sidebar panel">
+                    <div class="panel-header">
+                        <h2 class="panel-title">SEO Optimization</h2>
+                        <i class="ph ph-dots-three-outline"></i>
+                    </div>
+                    
+                    <div class="seo-group">
+                        <label>SEO Title</label>
+                        <input type="text" id="seoTitle" value="Future of AI Marketing 2026">
+                        <div class="platform-indicators">
+                            <div class="indicator youtube">
+                                <i class="ph ph-youtube-logo"></i>
+                                <div class="count-bar"><div class="fill" style="width: 57%;"></div></div>
+                                <span class="count">57 / 100</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="seo-group">
+                        <label>Tone & Manner <span class="current-tone">57 / 100</span></label>
+                        <div class="tone-buttons">
+                            <button class="tone-btn">Professional</button>
+                            <button class="tone-btn active">Viral</button>
+                            <button class="tone-btn">Witty</button>
+                        </div>
+                    </div>
+
+                    <div class="seo-group">
+                        <label>Keyword List</label>
+                        <div class="keyword-list">
+                            <div class="keyword-item confidence-high">
+                                <span class="status-dot"></span>
+                                <span class="text">AI Marketing Automation</span>
+                                <span class="percentage">92%</span>
+                                <i class="ph-fill ph-check-circle"></i>
+                            </div>
+                            <div class="keyword-item confidence-mid">
+                                <span class="status-dot"></span>
+                                <span class="text">Future of AI</span>
+                                <span class="percentage">72%</span>
+                                <i class="ph ph-warning-circle"></i>
+                            </div>
+                            <div class="keyword-item confidence-high">
+                                <span class="status-dot"></span>
+                                <span class="text">Real-Time Analytics</span>
+                                <span class="percentage">85%</span>
+                                <i class="ph-fill ph-check-circle"></i>
+                            </div>
+                            <div class="keyword-item confidence-mid">
+                                <span class="status-dot"></span>
+                                <span class="text">Global SaaS Trends</span>
+                                <span class="percentage">78%</span>
+                                <i class="ph ph-warning-circle"></i>
+                            </div>
+                            <div class="keyword-item confidence-low">
+                                <span class="status-dot"></span>
+                                <span class="text">AI for Business</span>
+                                <span class="percentage">41%</span>
+                                <i class="ph ph-warning"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button class="generate-btn">
+                        <i class="ph ph-lightning"></i>
+                        Generate SEO
+                    </button>
+                </aside>
+            </div>
+
+            <!-- Bottom Analytics Dashboard -->
+            <footer class="analytics-row">
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="ph ph-users"></i></div>
+                    <div class="stat-info">
+                        <span class="stat-label">Views</span>
+                        <span class="stat-value">125,840</span>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="ph ph-hand-pointing"></i></div>
+                    <div class="stat-info">
+                        <span class="stat-label">Engagement</span>
+                        <span class="stat-value">89%</span>
+                        <div class="circular-progress" style="--percent: 89;"></div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="ph ph-magnifying-glass"></i></div>
+                    <div class="stat-info">
+                        <span class="stat-label">SEO Score</span>
+                        <span class="stat-value">92<span class="small">/100</span></span>
+                        <div class="circular-progress" style="--percent: 92;"></div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="ph ph-heartbeat"></i></div>
+                    <div class="stat-info">
+                        <span class="stat-label">Emotion Peak</span>
+                        <span class="stat-value">00:43</span>
+                        <div class="mini-graph"></div>
+                    </div>
+                </div>
+            </footer>
+        </main>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
